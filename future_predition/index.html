@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>User Details Form</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: url('b.jpg') no-repeat center center fixed;
+      background-size: cover;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      flex-direction: column;
+    }
+
+    .container {
+      background: rgba(255, 255, 255, 0.15); /* transparent white */
+      backdrop-filter: blur(12px); /* glass effect */
+      -webkit-backdrop-filter: blur(12px);
+      padding: 40px 30px;
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+      max-width: 480px;
+      width: 90%;
+      animation: fadeIn 1s ease-in-out;
+      margin-bottom: 20px;
+      border: 1px solid rgba(255, 255, 255, 0.3);
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    h1 {
+      text-align: center;
+      color: #fff;
+      margin-bottom: 25px;
+      text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.6);
+    }
+
+    .label-box {
+      display: inline-block;
+      background-color: #000;
+      color: #fff;
+      padding: 6px 12px;
+      border-radius: 6px;
+      font-weight: bold;
+      margin-bottom: 8px;
+      font-size: 14px;
+      box-shadow: 0 0 4px rgba(0,0,0,0.6);
+    }
+
+    .form-group {
+      margin-bottom: 22px;
+    }
+
+    input, select {
+      width: 100%;
+      padding: 12px 14px;
+      font-size: 15px;
+      border-radius: 10px;
+      border: 2px solid #00bfa5;
+      background-color: rgba(255, 255, 255, 0.85);
+      box-shadow: 0 0 8px rgba(0, 191, 165, 0.5);
+      transition: all 0.3s ease;
+    }
+
+    input::placeholder {
+      color: #555;
+    }
+
+    input:focus, select:focus {
+      background-color: #fff;
+      box-shadow: 0 0 10px rgba(0, 191, 165, 0.8);
+      outline: none;
+    }
+
+    button {
+      position: relative;
+      width: 100%;
+      padding: 14px;
+      margin-top: 10px;
+      background: linear-gradient(to right, #00c6ff, #0072ff);
+      color: white;
+      border: none;
+      font-size: 16px;
+      font-weight: bold;
+      border-radius: 12px;
+      cursor: pointer;
+      box-shadow: 0 4px 15px rgba(0, 118, 255, 0.4);
+      overflow: hidden;
+      transition: transform 0.3s ease;
+    }
+
+    button::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -75%;
+      width: 50%;
+      height: 100%;
+      background: rgba(255, 255, 255, 0.3);
+      transform: skewX(-20deg);
+      transition: left 0.5s;
+    }
+
+    button:hover::before {
+      left: 125%;
+    }
+
+    button:hover {
+      transform: scale(1.03);
+      background: linear-gradient(to right, #0072ff, #00c6ff);
+      box-shadow: 0 6px 20px rgba(0, 118, 255, 0.6);
+    }
+
+    @media (max-width: 600px) {
+      .container {
+        padding: 30px 20px;
+      }
+
+      h1 {
+        font-size: 22px;
+      }
+
+      input, select, button {
+        font-size: 14px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>🔮 Enter Your Details</h1>
+    <form action="submit.php" method="POST">
+      
+      <div class="form-group">
+        <label class="label-box" for="name">NAME:</label>
+        <input type="text" name="name" id="name" placeholder="Enter your name" required>
+      </div>
+
+      <div class="form-group">
+        <label class="label-box" for="mobile">MOBILE NUMBER:</label>
+        <input type="tel" name="mobile" id="mobile" placeholder="Enter your mobile number" pattern="[0-9]{10}" maxlength="10" minlength="10" inputmode="numeric" required>
+      </div>
+
+      <div class="form-group">
+        <label class="label-box" for="rasi">ராசி (ZODIAC):</label>
+        <select name="rasi" id="rasi" required>
+          <option value="">தேர்ந்தெடுக்கவும்</option>
+          <option value="மேஷம்">மேஷம்</option>
+          <option value="ரிஷபம்">ரிஷபம்</option>
+          <option value="மிதுனம்">மிதுனம்</option>
+          <option value="கடகம்">கடகம்</option>
+          <option value="சிம்மம்">சிம்மம்</option>
+          <option value="கன்னி">கன்னி</option>
+          <option value="துலாம்">துலாம்</option>
+          <option value="விருச்சிகம்">விருச்சிகம்</option>
+          <option value="தனுசு">தனுசு</option>
+          <option value="மகரம்">மகரம்</option>
+          <option value="கும்பம்">கும்பம்</option>
+          <option value="மீனம்">மீனம்</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label class="label-box" for="natchathiram">நட்சத்திரம் (NAKSHATRAM):</label>
+        <select name="natchathiram" id="natchathiram" required>
+          <option value="">தேர்ந்தெடுக்கவும்</option>
+          <option value="அஸ்வினி">அஸ்வினி</option>
+          <option value="பரணி">பரணி</option>
+          <option value="கார்த்திகை">கார்த்திகை</option>
+          <option value="ரோகிணி">ரோகிணி</option>
+          <option value="மிருகசீரிடம்">மிருகசீரிடம்</option>
+          <option value="திருவாதிரை">திருவாதிரை</option>
+          <option value="புனர்பூசம்">புனர்பூசம்</option>
+          <option value="பூசம்">பூசம்</option>
+          <option value="ஆயில்யம்">ஆயில்யம்</option>
+          <option value="மகம்">மகம்</option>
+          <option value="பூரம்">பூரம்</option>
+          <option value="உத்திரம்">உத்திரம்</option>
+          <option value="ஹஸ்தம்">ஹஸ்தம்</option>
+          <option value="சித்திரை">சித்திரை</option>
+          <option value="சுவாதி">சுவாதி</option>
+          <option value="விசாகம்">விசாகம்</option>
+          <option value="அனுராதா">அனுராதா</option>
+          <option value="ஜ்யேஷ்டா">ஜ்யேஷ்டா</option>
+          <option value="மூலம்">மூலம்</option>
+          <option value="பூரவாஷாடா">பூரவாஷாடா</option>
+          <option value="உத்திராஷாடா">உத்திராஷாடா</option>
+          <option value="திருவோணம்">திருவோணம்</option>
+          <option value="தனிஷ்டா">தனிஷ்டா</option>
+          <option value="சதபிஷா">சதபிஷா</option>
+          <option value="பூரட்டாதி">பூரட்டாதி</option>
+          <option value="உத்திரட்டாதி">உத்திரட்டாதி</option>
+          <option value="ரேவதி">ரேவதி</option>
+        </select>
+      </div>
+
+      <button type="submit">🚀 Submit</button>
+    </form>
+  </div>
+</body>
+</html>
